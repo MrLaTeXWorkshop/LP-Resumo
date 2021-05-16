@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[a4paper,top=3.5cm,left=3cm,right=3cm,bottom=2.5cm]{geometry}
+
+%configurando identação e separação de parágrafos
+\parindent 1.27cm
+\parskip   6pt
+
+%configurando os hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+%títulos,autor e data
+\title{\textbf{Resumo do artigo \emph{On Understanding Types,Data Abstraction, and Polymorphism}}}
+\author{Gustavo Lopes Rodrigues}
+\date{Abril de 2021}
+
+\begin{document}
+    
+    \maketitle
+
+    \begin{abstract}
+        O Artigo , busca fazer uma compreensão dos termos: tipagem, abstração de dados e polimorfismo, que junto aos 
+        conhecimentos da teoria da tipagem, em busca de criar um modelo para criação de linguagens de programação forte, 
+        com alto polimorfismo, utilizando o cálculo $\lambda$. O nome desse módelo é \emph{FUN}.
+    \end{abstract}
+
+    \section{Secção 1}
+    \subsection{Sem tipo e com tipo}
+
+        Para começar o artigo, o autor em vez de ir pela definição diretamente, ele 
+        dá exemplos de linguagens sem tipagem e o processo de como a tipagem foi naturalmente
+        sendo incorporado.
+
+        Não tipagem significa ter uma tipagem só. Na memória do computador isso é representando por 
+        bit strings. Em LISP, são as \emph{S-expressions}. No Cálculo lambda, são as expressões lambda. Por fim
+        também tem os Sets em Set Theory. 
+
+        A ideia de possuir tipos foi naturalmente implementada, com a necessidade de possuir diferentes 
+        formatos com diferentes usos e diferentes comportamentos. Porém, ainda é muito díficil fazer uma distinção completa 
+        entre a organização de sem tipos e de fazer realmente uma linguagem com tipagem. Um exemplo disso seria ter uma função 
+        lambda que retorna booleano ou integer.
+
+    \subsection{Tipagem forte e fraca}
+
+        Uma maneira descrever tipos é comparando com uma armadura. Armaduras protegem o usuário de danos
+        exteriores. Em tipagem, a armadura protege os dados de serem usados de forma não desejadas ou não
+        intencionadas. Isso acontece, pois como objetos possuem certas tipagem, ele precisa seguir as 
+        funcionalidade da tal tipagem. O problema é que mesmo assim, durante compilação, pode acontecer de
+        essa regra não ser obdecida e causar muitos problemas. Uma solução para esse problema é a tipagem estática. 
+        
+        Tipagem estática significa que variáveis de um programa são definidas explicitamentes e então 
+        checados durante tempo de compilação. Isso é importante para a checagem de erros, melhoria em performance , garante 
+        uma estrutura a ser respeitada e de fácil leitura. Porém, existe uma outra tipo de tipagem, que garante maior 
+        flexibilidade, a tipagem forte. 
+
+        Tipagem forte são linguagens onde cada tipo de dado, são predefinidos como parte da linguagem
+
+    \subsection{Tipos de polimorfismo} 
+
+        Monormofismo é a ideia de que todos os valores e variáveis podem ser interpretados como um único tipo, enquanto
+        que linguagem polimorficas possuem a ideia contrária: valores e variáveis talvez tenham mais de um tipo e suas 
+        operações são aplicáveis a operandos de mais de um tipo.
+
+        Existe dois grande grupos de polimorfismo: universal e não universal(Ad-hoc).
+
+        \subsubsection{Universal}
+
+        Polimorfismo universal assume que um tipo pode assumir um infinito número de diferentes tipos.
+
+        Eis os subtipos do polimorfismo universal:
+
+        \begin{itemize}
+            \item \textbf{Polimorfismo paramétrico}: Permitir uma função ou um tipo de dados funcionar com uma gama de tipos diferentes, 
+            exibindo algum tipo de estrutura em comum(genérico) \\ \emph{Ex: templates em C++, ArrayList em Java.}
+            \item \textbf{Polimorfismo de inclusão}: Habilidade de classificar subtipos utilizando herança \\ \emph{Ex: Extends em Java}        
+        \end{itemize}
+
+        \newpage
+
+        \subsubsection{Não-universal(Ad-hoc)}
+
+        Ad hoc é um tipo de polimorfismo no qual objetos podem ser aplicados a argumentos de diferentes 
+        tipos, porque uma objetos polimórficos podem denotar uma série de implementações distintas e potencialmente heterogêneas, dependendo
+        do tipo de argumento(s) ao qual é aplicada.
+
+        Eis os subtipos do polimorfismo de Ad-hoc:
+
+        \begin{itemize}
+            \item \textbf{Polimorfismo de sobrecarga}: Uma estrutura funciona em diferentes tipos, e podem funcionar de maneira diferente para 
+            cada tipo. Também chamado de Overloading, este processo é puramente uma maneira sintática para usar nomes iguais para objetos diferentes.
+            Em tempo de compilação, o compilador pode resolver a ambiguidade\\ \emph{Ex: Funções com o mesmo nome, mas que recebem parâmetros com tipos diferentes.}
+            \item \textbf{Polimorfismo de coerção}: operação semântica necessária para converter um tipo  
+            para outro. Isso é necessário para evitar erros de compilação e as vezes o próprio compilador 
+            já faz isso. \\ \emph{Ex: soma de inteiros com números reais}
+        \end{itemize}
+
+        A distinção de sobrecarga e coerção pode ser um pouco confusa em algumas situações, principalmente
+        em linguas sem tipagem e tipagem, ou até mesmo em státicas e compiladas. 
+
+        \subsubsection{Polimorfismo em monormofismo}
+
+        Estas definições de polimorfismo apresentadas pelo autor são aplicáveis 
+        apenas em linguagens com uma clara noção de tipo e valor. Isso se torna um 
+        problema, pois linguagens estritamente monorficas seriam muito restritivas
+        em seu poder de expressão. Algumas linguagens conseguem tirar algumas das 
+        restrições sobreimposta pelo padrão do monormofismo, como por exemplo: Ada e 
+        Pascal. Estas línguas extendem o conceito de monormofismo, aplicando as regras  
+        do polimorfismo atráves das maneiras que elas conseguem.
+
+        \begin{itemize}
+            \item Overloading(Sobrecarga)
+            \item Coercion(coerção)
+            \item Subtyping(inclusão)
+            \item Value Sharing(paramétrico)
+        \end{itemize}
+
+        Lembrando apenas de que: por mais que existem paradigmas do polimorfismo presente, 
+        nenhuma dessas linguagens são "verdadeiramente polimorficas".
+
+        \subsection{A evolução de tipos em linguagens de programação}
+
+        Essa história começa com a linguagem de programação FORTRAN. Essa linguagem tinha 
+        uma propriedade interessante: diferenciar inteiros de números reais. O motivo pelo 
+        qual essa distinção era feita, é devido a necessidade de distinguir os inteiros para 
+        a realização de iteração in loops e computação em arrays.
+
+        Outras linguagems também pegaram carona nessa ideia, linguagens como o ALGOL 60 
+        tinham também essa distinção, porém a distinção era entre inteiros, reais e booleanos.
+        ALGOL 60  foi a primeira linguagem a ter a explícita noção de tipos e requerimentos
+        associados em tempo de compilação para verificação de tipos.
+
+        Com o passar do tempo, as linguagens de programação foram aumentando a 
+        quantidade de tipos presentes: arrays, ponteiros, strings, char, bytes e arquivos
+        são apenas alguns exemplos tipos que foram adicionados.
+
+        \subsection{Sublíngua de expressão de tipos(SET)}
+
+        Um dos objetivos desse artigo é de examinar os prós e contras entre 
+        riqueza e tratabilidade(acessibilidade para checagem de tipo durante compilação)
+        para SETs.
+        
+        Basicamente, existe todo um vocabulário de palavras usadas para definir os tipos 
+        em linguagens de programação, sublinguagens de expressão de tipos incluem os tipos de 
+        dados básicos, como: inteiros e booleanos.
+
+        SETs precisam ser tanto para denotaram tipo, mas também para mostrar equivalência/similaridade
+        a quais tipos. O objetivo é que a relação entre tipos possam ser expressas e computáveis.
+        Similaridade entre tipos pode ser referido como polimorfismo.
+
+        \section{FUN}
+
+        FUN é uma linguagem de programação baseada em cálculo lambda ($\lambda$) 
+        que junta a tipagem lambda, com capacidade de modelar polimorfismo e OOP.
+        Esta linguagem encapsula conceitos já citados anteriormente.
+
+        Característisticas da linguagem: 
+
+        \begin{itemize}
+            \item Possui tipagem e também pode funcionar sem fazer tipagem explícita.
+            \item Tipos parametrizados 
+            \item Abstração de tipos 
+            \item Herança 
+            \item 5 tipos básicos diferentes 
+        \end{itemize}
+
+        
+
+        
+
+
+
+\end{document}
